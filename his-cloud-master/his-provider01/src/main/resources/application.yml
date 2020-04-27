@@ -1,0 +1,40 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: choice-service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://121.199.3.141:3306/cloud01
+    username: dongmengda
+    password: 123qweQWE@
+    hikari:
+      connection-timeout: 20000            #等待来自池的连接的最大毫秒数
+      minimum-idle: 5                      #池中维护的最小空闲连接数
+      maximum-pool-size: 12                #池中最大连接数，包括闲置和使用中的连接
+      idle-timeout: 300000                 #连接允许在池中闲置的最长时间
+      max-lifetime: 1200000               #池中连接最长生命周期
+      auto-commit: true                   #自动提交从池中返回的连接
+mybatis-plus:
+   configuration:
+         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   #打印sql
+   mapper-locations: classpath*:/mapper/*Mapper.xml
+   type-aliases-package: com.choice.his.pojo
+   global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka,http://127.0.0.1:7002/eureka.http://127.0.0.1:7003/eureka
+  instance:
+      instance-id: choice-provider01
+      prefer-ip-address: true
+      ip-address: 127.0.0.1
+actuator:
+      info:
+         app.name: choice-provider01

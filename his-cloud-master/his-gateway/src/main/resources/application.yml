@@ -1,0 +1,31 @@
+server:
+  port: 6001
+spring:
+  application:
+    name: his-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka,http://127.0.0.1:7002/eureka.http://127.0.0.1:7003/eureka
+  instance:
+      instance-id: his-gateway01
+      prefer-ip-address: true
+      ip-address: 127.0.0.1
+zuul:
+  prefix: /his # 添加路由前缀
+  ignore-services: "*"
+  routes:
+    server.serviceId: CHOICE-SERVICE #服务名注册中心的服务名称
+    server.path: /service/** #替换为指定路径
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 # 熔断超时时长：10000ms
+ribbon:
+  ConnectTimeout: 500 # ribbon链接超时时长
+  ReadTimeout: 1000 # ribbon读取超时时长
+  MaxAutoRetries: 3  # 当前服务重试次数
+  MaxAutoRetriesNextServer: 3 # 切换服务重试次数

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.choice.his.provider02.dao.TbStoreMapper">
+    <!--结果集映射-->
+    <resultMap id="BaseResultMap" type="com.choice.his.pojo.TbStore">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="store_title" property="storeTitle" jdbcType="VARCHAR"/><!--String-->
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/><!--BigDecimal-->
+        <result column="store_href" property="storeHref" jdbcType="VARCHAR"/><!--Long-->
+        <result column="store_address" property="storeAddress" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DECIMAL"/>
+        <result column="latitude" property="latitude" jdbcType="DECIMAL"/>
+        <result column="img_url" property="imgUrl" jdbcType="VARCHAR"/>
+        <result column="img_mt" property="imgMt" jdbcType="VARCHAR"/>
+        <result column="img_elm" property="imgElm" jdbcType="VARCHAR"/>
+        <result column="img_detaile" property="imgDetaile" jdbcType="VARCHAR"/>
+        <result column="footer_href_mt" property="footerHrefMt" jdbcType="VARCHAR"/>
+        <result column="footer_href_elm" property="footerHrefElm" jdbcType="VARCHAR"/>
+        <result column="type_words" property="typeWords" jdbcType="VARCHAR"/>
+        <result column="store_type" property="storeType" jdbcType="INTEGER"/>
+        <result column="sales_volume" property="salesVolume" jdbcType="INTEGER"/>
+        <result column="average_price" property="averagePrice" jdbcType="INTEGER"/>
+        <result column="tang_food" property="tangFood" jdbcType="INTEGER"/>
+        <result column="is_chain" property="isChain" jdbcType="INTEGER"/>
+        <result column="chain_number" property="chainNumber" jdbcType="INTEGER"/>
+        <result column="city_number" property="cityNumber" jdbcType="INTEGER"/>
+        <result column="recommendation_index" property="recommendationIndex" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="story" property="story" jdbcType="VARCHAR"/>
+        <result column="business_hours" property="businessHours" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="INTEGER"/>
+        <result column="create_by" property="createBy" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="INTEGER"/>
+        <result column="update_by" property="updateBy" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="create" parameterType="TbStore" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_store(tbStore) values(#{tbStore})
+    </insert>
+
+    <select id="getById" parameterType="Long" resultMap="BaseResultMap">
+        select * from tb_store where id=#{id};
+    </select>
+</mapper>

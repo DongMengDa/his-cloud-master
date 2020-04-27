@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--需要注意两表中有同名字段-->
+<mapper namespace="com.choice.his.provider02.dao.TbUserMapper"><!--服务名称空间，每个服务不同-->
+    <!--结果集映射-->
+    <resultMap id="TbUserBaseResultMap" type="com.choice.his.pojo.TbUser"><!--类型-->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_no" property="userNo" jdbcType="VARCHAR"/><!--String-->
+        <result column="password" property="password" jdbcType="VARCHAR"/><!--BigDecimal-->
+        <result column="open_id" property="openId" jdbcType="VARCHAR"/><!--Long-->
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_age" property="userAge" jdbcType="TINYINT"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="telphone" property="telphone" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="INTEGER"/>
+        <!--集合名称，数据类型-->
+        <collection property="storeList" ofType="com.choice.his.pojo.TbStore"><!--collection关联集合-->
+            <id column="id" property="id"/>
+            <result column="store_title" property="storeTitle" /><!--String-->
+            <result column="telephone" property="telephone" /><!--BigDecimal-->
+            <result column="store_href" property="storeHref"/><!--Long-->
+            <result column="store_address" property="storeAddress" />
+            <result column="longitude" property="longitude" />
+            <result column="latitude" property="latitude"/>
+            <result column="img_url" property="imgUrl" />
+            <result column="img_mt" property="imgMt"/>
+            <result column="img_elm" property="imgElm" />
+            <result column="img_detaile" property="imgDetaile"/>
+            <result column="footer_href_mt" property="footerHrefMt"/>
+            <result column="footer_href_elm" property="footerHrefElm"/>
+            <result column="type_words" property="typeWords"/>
+            <result column="store_type" property="storeType"/>
+            <result column="sales_volume" property="salesVolume"/>
+            <result column="average_price" property="averagePrice" />
+            <result column="tang_food" property="tangFood" />
+            <result column="is_chain" property="isChain" />
+            <result column="chain_number" property="chainNumber" />
+            <result column="city_number" property="cityNumber"/>
+            <result column="recommendation_index" property="recommendationIndex" />
+            <result column="status" property="status" />
+            <result column="story" property="story" />
+            <result column="business_hours" property="businessHours" />
+            <result column="remark" property="remark" />
+            <result column="create_date" property="createDate" />
+            <result column="create_by" property="createBy" />
+            <result column="update_date" property="updateDate" />
+            <result column="update_by" property="updateBy" />
+        </collection>
+    </resultMap>
+    <resultMap id="SingleResultMap" type="com.choice.his.pojo.TbUser">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_no" property="userNo" jdbcType="VARCHAR"/><!--String-->
+        <result column="password" property="password" jdbcType="VARCHAR"/><!--BigDecimal-->
+        <result column="open_id" property="openId" jdbcType="VARCHAR"/><!--Long-->
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_age" property="userAge" jdbcType="TINYINT"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="telphone" property="telphone" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="INTEGER"/>
+        <result column="update_date" property="updateDate" jdbcType="INTEGER"/>
+
+    </resultMap>
+    <select id="queryUserAndStore" resultMap="TbUserBaseResultMap">
+        select tu.* ,ts.*,ts.remark from tb_user tu
+        left join tb_store ts
+        on tu.id = ts.id
+        where user_no=#{userNo}
+    </select>
+    <select id="queryUserByNo" resultType="com.choice.his.pojo.TbUser">
+        select * from  tb_user where  user_no = #{userNo};
+    </select>
+</mapper>

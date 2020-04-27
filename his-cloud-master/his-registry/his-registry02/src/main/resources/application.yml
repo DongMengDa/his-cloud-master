@@ -1,0 +1,14 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: his-registry
+eureka:
+  instance:
+     hostname: his-registry02.com
+     prefer-ip-address: false #true代表使用IP地址的形式来定义注册中心的地址
+  client:
+    fetch-registry: true
+    register-with-eureka: true  # 是否注册自己
+    service-url:
+      defaultZone: http://his-registry01.com:7001/eureka/,http://his-registry03.com:7003/eureka/
