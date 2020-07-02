@@ -33,7 +33,7 @@
     <java.version>1.8</java.version>
     <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
     <mapper.starter.version>2.0.4</mapper.starter.version>
-    <mysql.connector.version>5.1.46</mysql.connector.version>
+    <mysql.connector.version>8.0.16</mysql.connector.version>
     <mybatis-plus.spring.boot.version>3.0.6</mybatis-plus.spring.boot.version>
     <mybatis-plus.version>3.0.6</mybatis-plus.version>
     <hikaricp.version>3.3.1</hikaricp.version>
