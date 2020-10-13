@@ -38,7 +38,7 @@
     <mybatis-plus.version>3.0.6</mybatis-plus.version>
     <hikaricp.version>3.3.1</hikaricp.version>
     <mybatis.spring.boot.version>1.3.2</mybatis.spring.boot.version>
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
     <log4j.version>1.2.17</log4j.version>
     <pageHelper.starter.version>1.2.5</pageHelper.starter.version>
     <lombok.verison>1.18.12</lombok.verison>
